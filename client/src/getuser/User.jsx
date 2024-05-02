@@ -44,9 +44,13 @@ const User = () => {
                 <td>{user.email} </td>
                 <td>{user.address}</td>
                 <td className="actionsButtons">
-                  <button type="button" class="btn btn-warning">
+                  <Link
+                    to={`/update/` + user._id}
+                    type="button"
+                    class="btn btn-warning"
+                  >
                     <FaPenToSquare />
-                  </button>{" "}
+                  </Link>{" "}
                   <button type="button" class="btn btn-danger">
                     <BsFillTrash3Fill />
                   </button>
