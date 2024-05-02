@@ -11,7 +11,7 @@ export const create = async (req, res) => {
     }
     const savedData = await newUser.save();
     //res.status(200).json(savedData);
-    res.status(200).json({ message: "Création de l'utilisateur réussi" });
+    res.status(200).json({ message: "Utilisateur crée avec succés" });
   } catch (error) {
     res.status(500).json({ errorMessage: error.message });
   }
@@ -59,6 +59,22 @@ export const updateUser = async (req, res) => {
       new: true,
     });
     res.status(200).json(updatedData);
+  } catch (error) {
+    res.status(500).json({ errorMessage: error.message });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const userExist = await User.findById(id);
+    if (!userExist) {
+      return res
+        .status(404)
+        .json({ message: "Données d'utilisateurs indisponible" });
+    }
+    await User.findByIdAndDelete(id);
+    res.status(200).json({ message: "Utilisateur supprimé" });
   } catch (error) {
     res.status(500).json({ errorMessage: error.message });
   }
