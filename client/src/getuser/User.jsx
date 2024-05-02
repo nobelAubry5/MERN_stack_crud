@@ -4,6 +4,7 @@ import { FaPenToSquare } from "react-icons/fa6";
 import { FaUserPlus } from "react-icons/fa6";
 import "./user.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const User = () => {
   const [users, setUsers] = useState([]);
@@ -21,9 +22,9 @@ const User = () => {
 
   return (
     <div className="userTable">
-      <button type="button" class="btn btn-primary">
+      <Link to="/add" type="button" class="btn btn-primary">
         Ajouter un utilisateur <FaUserPlus />
-      </button>
+      </Link>
       <table className="table table-bordered">
         <thead>
           <tr>
